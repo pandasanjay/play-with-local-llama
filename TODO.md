@@ -15,3 +15,4 @@
 
 - [ ] What is Quantization? How that is works 
 - [ ] What is LLM inference? llama.cpp
+- [ ] Explore code of llama.cpp to understand how things work and contrebute
