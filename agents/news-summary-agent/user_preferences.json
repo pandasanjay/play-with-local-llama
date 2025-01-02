@@ -1,0 +1,51 @@
+{
+    "user1": {
+        "likes": [
+            "space exploration",
+            "robotics",
+            "quantum computing",
+            "artificial intelligence",
+            "machine learning",
+            "science",
+            "technology",
+            "space"
+        ],
+        "dislikes": [
+            "fashion",
+            "international news",
+            "celebrity gossip",
+            "politics",
+            "sports",
+            "reality TV",
+            "gossip"
+        ]
+    },
+    "user2": {
+        "likes": [
+            "politics",
+            "economics",
+            "international relations",
+            "social justice",
+            "environmental issues"
+        ],
+        "dislikes": [
+            "technology",
+            "artificial intelligence",
+            "space exploration"
+        ]
+    },
+    "user3": {
+        "likes": [
+            "sports",
+            "entertainment",
+            "music",
+            "movies",
+            "celebrity news"
+        ],
+        "dislikes": [
+            "science",
+            "technology",
+            "politics"
+        ]
+    }
+}

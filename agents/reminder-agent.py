@@ -1,9 +1,10 @@
 import requests
 import json
+from agents.utils import handle_stream_data
 import schedule
 import time
 
-
+ 
 def set_reminder(query):
     """
     Sets a reminder using the user's query and Ollama API.
@@ -17,16 +18,9 @@ def set_reminder(query):
     }
     response = requests.post(url, json=data, stream=True)
 
-    reminder_info = ""
-    for line in response.iter_lines():
-        if line:
-            decoded_line = line.decode("utf-8")
-            try:
-                json_line = json.loads(decoded_line)
-                if "response" in json_line:
-                    reminder_info += json_line["response"]
-            except json.JSONDecodeError:
-                pass  # Ignore lines that are not valid JSON
+    
+
+    reminder_info = handle_stream_data.extract_reminder_info(response)
 
     # Send the request to Ollama
     # Parse the JSON response

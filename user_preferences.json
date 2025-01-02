@@ -1,0 +1,15 @@
+{
+    "user1": {
+        "likes": [
+            "science",
+            "technology",
+            "space",
+            "quantum computing"
+        ],
+        "dislikes": [
+            "politics",
+            "international news",
+            "gossip"
+        ]
+    }
+}
