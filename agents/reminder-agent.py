@@ -1,6 +1,6 @@
 import requests
 import json
-from agents.utils import handle_stream_data
+from utils import handle_stream_data
 import schedule
 import time
 

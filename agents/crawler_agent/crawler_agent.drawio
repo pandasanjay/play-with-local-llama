@@ -1,0 +1,53 @@
+<mxfile host="65bd71144e">
+    <diagram id="UKQTkKt4L-hJC8BmIlhc" name="Page-1">
+        <mxGraphModel dx="835" dy="907" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="6" style="edgeStyle=none;html=1;entryX=1;entryY=0.75;entryDx=0;entryDy=0;exitX=0;exitY=0.75;exitDx=0;exitDy=0;" edge="1" parent="1" source="2" target="3">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="Return all the actions as JSON" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="6">
+                    <mxGeometry x="0.2214" y="-1" relative="1" as="geometry">
+                        <mxPoint x="35" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="2" value="Ollama" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="440" y="270" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" style="edgeStyle=none;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" edge="1" parent="1" source="3" target="2">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="Page Context" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="4">
+                    <mxGeometry x="0.112" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="3" value="Scrapy +&amp;nbsp;&lt;span style=&quot;background-color: rgb(34, 39, 46); color: rgb(173, 186, 199); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px;&quot;&gt;playwright&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="50" y="270" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="Send Selective Page containt (e.g remove all the json code)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="60" y="470" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="&lt;b&gt;Problem :&lt;/b&gt;&amp;nbsp; &lt;span style=&quot;font-size: 12px;&quot;&gt;We are currently sending page context within a prompt that is 537,807 in size. Ideally, we will encounter websites with even larger page content. The current model I am using locally, Llama3 2:1b, has a maximum context token limit of 2048.&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="60" y="370" width="510" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="Use of Bigger Token&lt;br&gt;LLM" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="470" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="?" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="425" y="470" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="&lt;b&gt;Potentional Solutions&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="25" y="440" width="190" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="&lt;b&gt;Not a Function Calling Way&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" vertex="1" parent="1">
+                    <mxGeometry x="50" y="190" width="510" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="&lt;b&gt;Function Calling Way&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" vertex="1" parent="1">
+                    <mxGeometry x="680" y="190" width="510" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
