@@ -78,3 +78,21 @@ ollama run llama3.2:1b
 ....
 ### 3. Using llama.cpp in Langchain
 ....
+
+### 4. Using Vllm in local
+- I tried to setup Vllm in WSL it didn't work well, I got multiple issues and wasted lot of time.
+- Now I am trying with NVIDIA PyTorch Docker image
+```
+# Use `--ipc=host` to make sure the shared memory is large enough.
+docker run --gpus all -it --rm --ipc=host nvcr.io/nvidia/pytorch:23.10-py3
+```
+
+
+### After experimentation ~20 Days 
+I think to start with function calling and agentic AI, developing with local Llama is some what west of time, particulary if you don't have stong enough GUP and RAM. The important aspect of learning is how quickly you can learn and develop your leanring.
+
+I think it is better to spend little money with using 
+- gpt-4o-min
+- gemini-2.0-flash-exp (Free)
+
+All of this excersise you can play and test with above model. 
