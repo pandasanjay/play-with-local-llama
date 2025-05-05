@@ -1,98 +1,151 @@
-# Overview
-This repo is buit to learn and practice use of model and how to build agentic ai.
+# LLM and Agentic AI Systems: A Beginner's Guide
 
-# Prerequisites
-We need to install
-**TODO** - link to the WSL-setup repo
+This repository provides a structured approach to learning about Large Language Models (LLMs) and Agentic AI systems through practical examples.
 
-# Steps to download LLama
-Follow the step llama website
+## Prerequisites
 
-## Convert Lama model to other format
-<details>
-  <summary>Usefull Info/Questions</summary>
-❓**Why we need to change model to diffrent format? e.g guff, ggml or hugging face transform supported**
+- Python 3.10+
+- A Google API key (for Gemini models) or access to local LLM via Ollama
+- Basic understanding of Python programming
 
-- **Optimization**: Different formats optimize models for specific hardware (CPUs, GPUs) and software, improving performance and efficiency.
+## Installation
 
-- **Compatibility**:  Converting formats ensures models work seamlessly with various tools, libraries, and platforms.
+### Using uv (Recommended)
 
-- **Quantization**: Formats like GGUF/GGML support efficient quantization, reducing model size and memory usage for improved performance.
+This project uses [uv](https://astral.sh/uv), an extremely fast Python package manager and project tool written in Rust.
 
-- While format conversion is crucial for local LLM running, it can also be necessary in cloud environments to ensure compatibility, optimization, and integration with cloud-specific tools and services.
-
-❓**What is the diffrence btween pth vs pkl?**
-
-- The .pth file format is a common way to save and load PyTorch models. It's like a snapshot of the model's architecture and learned parameters, allowing you to store and reuse the model later without retraining.
-- Use .pkl for saving general Python objects, including models from other frameworks or data structures.
-
-</details>
-
-1. Convert the Llama model to HF model type
-    This is another useful link to use [Hugging Face Llama](https://huggingface.co/docs/transformers/main/en/model_doc/llama3)
-
-    ```sh
-    # This worked fine but we can use Llama3.1-8B as directly it is big and memory intensive, it does work Ollama
-    python3 ~/miniforge3/envs/cuda12-2/lib/python3.1/site-packages/transformers/models/llama/convert_llama_weights_to_hf.py \
-    --input_dir /home/sanjay/.llama/checkpoints/Llama3.1-8B \
-    --model_size 1B  \
-    --output_dir /home/sanjay/.llama/checkpoints/Llama3.1-8B/hf-output/ \
-    --llama_version 3.2
-
-    # OR Converting 3.2 1B as small one
-    python3 ~/miniforge3/envs/cuda12-2/lib/python3.1/site-packages/transformers/models/llama/convert_llama_weights_to_hf.py \
-    --input_dir ~/.llama/checkpoints/Llama3.2-1B \
-    --model_size 1B  \
-    --output_dir ~/.llama/checkpoints/Llama3.2-1B/hf-output/ \
-    --llama_version 3.2
-    ```
-
-2. To use LangChain or specifically llama.cpp we need to convert it to GGUF
-    - Clone the Repo https://github.com/ggerganov/llama.cpp/tree/master
-    - Install the Python dependency (Always remember to create a separate environment to do this)
-
-    ```sh
-    python convert_hf_to_gguf.py /home/sanjay-dev/.llama/checkpoints/Llama3.2-1B/hf-output --outfile /home/sanjay-dev/.llama/checkpoints/Llama3.2-1B/hf-output/model.gguf --outtype f16
-    ```
-
-## Ways to run the LLM
-This exmaple we are using LLama3.2:1B model in three way
-### 1. Using ollama
-This is one of the fasted way to run the llama model and play it localy. 
-To intall the Ollama: [https://ollama.com/download/linux](https://ollama.com/download/linux)
-
-Find the available models from [Ollaman model search](https://ollama.com/search) page
-
-```sh
-# To pull the modle
-ollama pull llama3.2:1b
-
-# To list the modeles availble
-ollama ls
-
-# To run the model
-ollama run llama3.2:1b
-``` 
-
-### 2. Using HF Transforms (Locally downloaded Llama)
-....
-### 3. Using llama.cpp in Langchain
-....
-
-### 4. Using Vllm in local
-- I tried to setup Vllm in WSL it didn't work well, I got multiple issues and wasted lot of time.
-- Now I am trying with NVIDIA PyTorch Docker image
-```
-# Use `--ipc=host` to make sure the shared memory is large enough.
-docker run --gpus all -it --rm --ipc=host nvcr.io/nvidia/pytorch:23.10-py3
+1. Install uv:
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
+2. Create a virtual environment and install dependencies:
+```bash
+uv venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+uv pip sync
+```
 
-### After experimentation ~20 Days 
-I think to start with function calling and agentic AI, developing with local Llama is some what west of time, particulary if you don't have stong enough GUP and RAM. The important aspect of learning is how quickly you can learn and develop your leanring.
+3. Install optional dependencies:
+```bash
+# For development tools
+uv pip install -e ".[dev]"
 
-I think it is better to spend little money with using 
-- gpt-4o-min
-- gemini-2.0-flash-exp (Free)
+# For notebook support
+uv pip install -e ".[notebook]"
 
-All of this excersise you can play and test with above model. 
+# For GPU acceleration
+uv pip install -e ".[gpu]"
+
+# For web-related examples
+uv pip install -e ".[web]"
+```
+
+### Using pip (Alternative)
+
+If you prefer traditional pip:
+```bash
+pip install -r requirements.txt
+```
+
+## Ollama Setup
+
+For examples using local LLMs, you'll need to install [Ollama](https://ollama.ai/) separately on your system:
+
+1. Install Ollama:
+```bash
+curl -fsSL https://ollama.ai/install.sh | sh
+```
+
+2. Start the Ollama service:
+```bash
+ollama serve
+```
+
+3. Pull the models required for the examples:
+```bash
+ollama pull llama2
+ollama pull mistral
+ollama pull dwightfoster03/functionary-small-v3.1
+```
+
+## Using the Development Container
+
+This repository includes a devcontainer configuration for VS Code with CUDA support:
+
+1. Install [Docker](https://www.docker.com/products/docker-desktop/) and [VS Code](https://code.visualstudio.com/)
+2. Install the [Remote Development extension pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)
+3. Install [Ollama](https://ollama.ai/) on your host system (not in the container)
+4. Open this repository in VS Code and click "Reopen in Container" when prompted
+5. The container will set up everything automatically, including:
+   - Python 3.10 with uv package manager
+   - CUDA support for GPU acceleration
+   - All required dependencies
+
+Note: Ollama needs to be running on your host system and accessible to the container. The default connection URL is http://localhost:11434.
+
+## Learning Path
+
+### 1. Basic LLM Interactions
+Start with the simplest examples to understand how to interact with language models:
+
+- **Simple Text Generation**: [test_llama.py](./test_llama.py)
+- **Getting Started with LangChain**: [agentic-framworks/langchain/get_started.py](./agentic-framworks/langchain/get_started.py)
+
+To run using uv:
+```bash
+uv run test_llama.py
+# or using the defined script shortcut
+uv run --script tutorial
+```
+
+### 2. Function Calling
+Learn how to make LLMs call specific functions:
+
+- **Basic Function Calling**: [agents/function_calling/function_calling_with_llm.py](./agents/function_calling/function_calling_with_llm.py)
+- **Advanced Function Calling**: [agents/function_calling/function_calling_with_llm_v2.py](./agents/function_calling/function_calling_with_llm_v2.py)
+
+To run using uv:
+```bash
+uv run --script function-call
+```
+
+### 3. Simple Agents
+Explore single-purpose agents:
+
+- **Movie Recommendation Agent**: [agents/movie-recommendation.py](./agents/movie-recomandation.py)
+- **Reminder Agent**: [agents/reminder-agent.py](./agents/reminder-agent.py)
+
+### 4. Advanced Agents
+Dive into more complex agent systems:
+
+- **News Summary Agent**: [agents/news-summary-agent/news-summary-agent.py](./agents/news-summary-agent/news-summary-agent.py)
+- **Web Crawler Agent**: [agents/crawler_agent/](./agents/crawler_agent/)
+
+### 5. Multi-Agent Systems
+Learn how multiple agents can work together:
+
+- **Multi-Agent System**: [agents/multi-agent/multi-agent-strctured_out.py](./agents/multi-agent/multi-agent-strctured_out.py)
+- **Planning Agent**: [agents/planning_agent/centralized_planning.py](./agents/planning_agent/centralized_planning.py)
+
+### 6. Advanced Topics
+Explore more advanced concepts:
+
+- **Model Internals**: Check the [tokenizers/](./tokenizers/) and [transformers/](./transformers/) directories
+- **Fine-tuning**: See examples in [fine-tuning/](./fine-tuning/)
+
+## Quick Start Guide
+
+If you're completely new to LLMs and AI agents, follow these steps:
+
+1. Start with [agentic-framworks/langchain/get_started.py](./agentic-framworks/langchain/get_started.py) to understand basic LLM interactions
+2. Move to [agents/function_calling/function_calling_with_llm.py](./agents/function_calling/function_calling_with_llm.py) to learn about function calling
+3. Try out the simple agents in the [agents/](./agents/) directory
+4. Progress to more complex multi-agent systems
+
+## Resources
+
+- [LangChain Documentation](https://python.langchain.com/docs/)
+- [Ollama GitHub Repository](https://github.com/ollama/ollama)
+- [Google AI Studio](https://ai.google.dev/)
+- [uv Documentation](https://docs.astral.sh/uv/)

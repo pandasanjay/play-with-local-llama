@@ -1,0 +1,48 @@
+# Move dockerignore to the root for better context handling
+# Ignore development artifacts
+.git/
+.github/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.env
+.venv
+env/
+venv/
+ENV/
+.jupyter/
+
+# Ignore large model files
+**/*.ckpt
+**/*.pt
+**/*.pth
+**/*.bin
+**/*.gguf
+**/*.ggml
+**/*.safetensors
+
+# Ignore large data directories
+fine-tuning/SanjayPanda/
+
+# IDE configuration
+.idea/
+.vscode/
+**/*.swp
+**/*.swo
+
+# Logs and runtime data
+logs/
+**/*.log
+
+# Cache directories
+**/__pycache__/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Keep requirements file accessible
+!requirements.txt
+!pyproject.toml
+!uvproject.toml

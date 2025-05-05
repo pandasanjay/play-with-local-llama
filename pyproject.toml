@@ -1,0 +1,78 @@
+[project]
+name = "play-with-local-llama"
+version = "0.1.0"
+description = "A collection of examples and tutorials for LLM and Agentic AI systems"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "LLM Playground", email = "example@example.com" }
+]
+
+dependencies = [
+    "langchain>=0.1.0",
+    "langchain-core>=0.1.0",
+    "langchain-google-genai>=0.0.5",
+    "langchain-community>=0.0.10",
+    "numpy>=1.24.0",
+    "pandas>=2.0.0",
+    "matplotlib>=3.7.0",
+    "openai>=1.0.0",
+    "llama-cpp-python>=0.2.0",
+    "pydantic>=2.0.0",
+    "python-dotenv>=1.0.0",
+    "requests>=2.28.0",
+    "beautifulsoup4>=4.12.0",
+    "PyQt5==5.15.4",
+    "mcp[cli]>=1.7.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "flake8",
+    "mypy",
+    "isort",
+    "pytest",
+]
+
+notebook = [
+    "ipython>=8.0.0",
+    "notebook>=7.0.0",
+    "ipywidgets>=8.0.0",
+]
+
+gpu = [
+    "torch>=2.0.0",
+    "transformers>=4.38.0",
+    "accelerate",
+    "bitsandbytes",
+]
+
+web = [
+    "scrapy>=2.11.0",
+    "fastapi",
+    "uvicorn",
+]
+
+[tool.setuptools]
+packages = ["agents", "tokenizers", "transformers", "agentic-framworks"]
+
+[tool.black]
+line-length = 88
+target-version = ["py310"]
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"

@@ -1,0 +1,20 @@
+[project]
+# uv-specific configuration to work alongside pyproject.toml
+name = "play-with-local-llama"
+requires-python = ">=3.10"
+
+[venv]
+# Define virtual environment behavior
+auto-generate = true
+include-system-site-packages = false
+
+[commands]
+# Define project-specific commands
+dev = "python -m uvicorn examples.server:app --reload"
+test = "python -m pytest"
+init-llm = "python test_llama.py"
+
+[scripts]
+# Shortcuts for common tasks
+tutorial = "python agentic-framworks/langchain/get_started.py"
+function-call = "python agents/function_calling/function_calling_with_llm_v2.py"
