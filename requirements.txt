@@ -3,7 +3,7 @@ langchain>=0.1.0
 langchain-core>=0.1.0
 langchain-google-genai>=0.0.5
 langchain-community>=0.0.10
-PyQt5==5.15.4
+# PyQt5==5.15.4
 numpy>=1.24.0
 pandas>=2.0.0
 matplotlib>=3.7.0
@@ -26,3 +26,6 @@ ipywidgets>=8.0.0
 # Uncomment these if you have a compatible GPU
 # torch>=2.0.0
 # transformers>=4.38.0
+
+google-adk>=0.5.0
+opik>=1.7.18
